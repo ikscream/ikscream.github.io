@@ -2,8 +2,8 @@
 provider "github" {
   # It is recommended to set the token as an environment variable (GITHUB_TOKEN)
   # rather than hardcoding it in your configuration.
-  token        = var.GITHUB_TOKEN
-  owner        = var.GITHUB_OWNER
+  token = var.GITHUB_TOKEN
+  owner = var.GITHUB_OWNER
 }
 
 # Variable for GitHub token
@@ -21,19 +21,19 @@ variable "GITHUB_OWNER" {
 # Create a new GitHub Repository
 resource "github_repository" "repo" {
   # Name of the repository
-  name        = "ikscream.github.io"
+  name = "ikscream.github.io"
 
   # Description of the repository
   description = "A new repository managed by Terraform"
 
   # Visibility of the repository, can be 'public' or 'private'
-  visibility  = "public"
+  visibility = "public"
 
   # Set to true to enable issues for the repository
-  has_issues  = false
+  has_issues = false
 
   # Set to true to enable wiki for the repository
-  has_wiki    = false
+  has_wiki = false
 }
 
 # Output the clone URL of the new repository

@@ -64,20 +64,33 @@ jobs:
     needs: 
       - build
     steps:
+    # Notify Telegram Step
+    # This step sends a notification message to Telegram.
     - name: Notify Telegram
       env:
+        # Telegram bot token, stored as a secret.
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+
+        # Telegram chat ID, stored as a secret.
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_TO }}
+
+        # The result of the 'build' job. It can be 'success', 'failure', or 'cancelled'.
         JOB_STATUS: ${{ needs.build.result }}
       run: |
+        # Determine the emoji and message text based on the job status.
         if [[ "$JOB_STATUS" == "success" ]]; then
           emoji="✅"
-          text="${{ github.event.commits[0].message }}"
         else
           emoji="❌"
-          text="${{ github.event.commits[0].message }}"
         fi
 
-        message="$emoji $text"
-        
+        # Formatted message including repository name, commit message as code, and author.
+        # GitHub Context Documentation: https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
+        repo_name="${{ github.repository }}"
+        commit_message="${{ github.event.commits[0].message }}"
+        author="${{ github.event.commits[0].author.name }}"
+        message="$emoji Repository: $repo_name\nAuthor: $author\nCommit: \`$commit_message\`"
+
+        # Sending the message to Telegram using the Telegram Bot API.
+        # Telegram Bot API sendMessage method: https://core.telegram.org/bots/api#sendmessage
         curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" -d chat_id="$TELEGRAM_CHAT_ID" -d text="$message"

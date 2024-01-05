@@ -21,7 +21,7 @@ variable "GITHUB_OWNER" {
 # Create a new GitHub Repository
 resource "github_repository" "repo" {
   # Name of the repository
-  name        = "chatgpt"
+  name        = "ikscream.github.io"
 
   # Description of the repository
   description = "A new repository managed by Terraform"

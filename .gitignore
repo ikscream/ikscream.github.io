@@ -5,6 +5,7 @@
 *.tfstate
 *.terraform.lock.hcl
 *.tfstate.*
+terraform/plan
 
 # Crash log files
 crash.log
@@ -31,3 +32,4 @@ terraform.rc
 # Ignore output files from Terraform plan, if saved
 *.tfplan
 
+terraform/plan

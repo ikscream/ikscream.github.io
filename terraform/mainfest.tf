@@ -27,10 +27,10 @@ resource "github_repository" "repo" {
   description = "A new repository managed by Terraform"
 
   # Visibility of the repository, can be 'public' or 'private'
-  visibility  = "private"
+  visibility  = "public"
 
   # Set to true to enable issues for the repository
-  has_issues  = true
+  has_issues  = false
 
   # Set to true to enable wiki for the repository
   has_wiki    = false

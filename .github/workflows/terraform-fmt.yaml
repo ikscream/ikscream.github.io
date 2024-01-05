@@ -92,7 +92,7 @@ jobs:
 
         # Sending the Markdown formatted message to Telegram using the Telegram Bot API.
         # Telegram Bot API sendMessage method: https://core.telegram.org/bots/api#sendmessage
-        message="${emoji} *Repository:* \`${repo_name}\`\\n*Author:* \`${author}\`\\n*Commit:* \`${commit_message}\`"
+        message="${emoji} *Repository:* \`${repo_name}\`%0A*Author:* \`${author}\`%0A*Commit:* \`${commit_message}\`"
 
         # Send the message using the Telegram Bot API with Markdown V2 parse mode.
         curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \

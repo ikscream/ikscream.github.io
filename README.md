@@ -8,6 +8,10 @@
 terraform fmt -recursive terraform
 ```
 
+### Ansible playbbok
+
+As a senior devops, write comments and module documentation with links to documentation to my ansible playbook. Comments should not be on the same line, use line upper to sting to comments. Try to include links to documentation in comments:
+
 ### Terraform manifest
 ```
 As a senior devops, write comments and module documentation with links to documentation to my terraform manifest. Comments should not be on the same line, use line upper to sting to comments. Try to include links to documentation in comments:
